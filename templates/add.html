@@ -1,0 +1,149 @@
+<html>
+<head>
+	<title>Add ride</title>
+	<link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="static/styles/main.css">
+
+</head>
+<body>
+	<div class="nav">
+      <div class="container">
+        <ul class="pull-left">
+          <li><a href="/">Home</a></li>
+          <li><a href="/browse">Browse</a></li>
+          <li><a href="/add">Add Ride</a></li>
+        </ul>
+        <ul class="pull-right">
+          <li><a href="#">Sign Up</a></li>
+          <li><a href="#">Log In</a></li>
+          <li><a href="#">Help</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="add_ride_container">
+      <form method="post">
+        <fieldset class="add_ride">
+          <legend>Add ride</legend>
+          <label class="field">Date</label>
+          <p class="add_ride_input">
+          	<select name="month" class="month_select">
+          		<option value selected disabled>Month</option>
+          		<option value="1">1</option>
+          		<option value="2">2</option>
+          		<option value="3">3</option>
+          		<option value="4">4</option>
+          		<option value="5">5</option>
+          		<option value="6">6</option>
+          		<option value="7">7</option>
+          		<option value="8">8</option>
+          		<option value="9">9</option>
+          		<option value="10">10</option>
+          		<option value="11">11</option>
+          		<option value="12">12</option>
+          	</select>
+          	<span class="date_slash">/</span>
+          	<select name="day" class="day_select">
+          		<option value selected disabled>Day</option>
+          		<option value="1">1</option>
+          		<option value="2">2</option>
+          		<option value="3">3</option>
+          		<option value="4">4</option>
+          		<option value="5">5</option>
+          		<option value="6">6</option>
+          		<option value="7">7</option>
+          		<option value="8">8</option>
+          		<option value="9">9</option>
+          		<option value="10">10</option>
+          		<option value="11">11</option>
+          		<option value="12">12</option>
+          		<option value="13">13</option>
+          		<option value="14">14</option>
+          		<option value="15">15</option>
+          		<option value="16">16</option>
+          		<option value="17">17</option>
+          		<option value="18">18</option>
+          		<option value="19">19</option>
+          		<option value="20">20</option>
+          		<option value="21">21</option>
+          		<option value="22">22</option>
+          		<option value="23">23</option>
+          		<option value="24">24</option>
+          		<option value="25">25</option>
+          		<option value="26">26</option>
+          		<option value="27">27</option>
+          		<option value="28">28</option>
+          		<option value="29">29</option>
+          		<option value="30">30</option>
+          		<option value="31">31</option>
+          	</select>
+          	<span class="date_slash">/</span>
+          	<select name="year" class="year_select">
+          		<option value selected disabled>Year</option>
+          		<option value="2014">2014</option>
+          		<option value="2015">2015</option>
+          		<option value="2016">2016</option>
+          		<option value="2017">2017</option>
+          	</select>
+          </p>
+
+          <label class="field">Time</label>
+          <p class="add_ride_input">
+          	<select name="hour" class="hour_select">
+          		<option value selected disabled>Hour</option>
+          		<option value="1">1</option>
+          		<option value="2">2</option>
+          		<option value="3">3</option>
+          		<option value="4">4</option>
+          		<option value="5">5</option>
+          		<option value="6">6</option>
+          		<option value="7">7</option>
+          		<option value="8">8</option>
+          		<option value="9">9</option>
+          		<option value="10">10</option>
+          		<option value="11">11</option>
+          		<option value="12">12</option>
+          	</select>
+          	<span class="time_colon">:</span>
+          	<select name="minute" class="minute_select">
+          		<option value selected disabled>Minute</option>
+          		<option value="0">00</option>
+          		<option value="15">15</option>
+          		<option value="30">30</option>
+          		<option value="45">45</option>
+          	</select>
+          	<select name="am_pm" class="am_pm_select">
+          		<option value="0" selected>AM</option>
+          		<option value="1">PM</option>
+          	</select>
+          </p>
+
+          <label class="field">Pick-up location</label>
+          <p class="add_ride_input">
+          	<input name="location" type="text">
+          </p>
+
+          <label class="field">Destination</label>
+          <p class="add_ride_input">
+          	<input name="destination" type="text">
+          </p>
+          
+          <label class="field">Name</label>
+          <p class="add_ride_input">
+          	<input name="name" type="text">
+          </p>
+
+          <label class="field">Phone number</label>
+          <p class="add_ride_input">
+          	<input name="phone" type="text">
+          </p>
+
+          <button name="create_ride_button" value="1">ADD RIDE</button>
+        </fieldset>
+      </form>
+      <p class="error_message">{{error}}</p>
+    </div>
+
+</body>
+</html>
