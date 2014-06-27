@@ -11,13 +11,12 @@
       <div class="container">
         <ul class="pull-left">
           <li><a href="/">Home</a></li>
-          <li><a href="/browse">Browse</a></li>
+          <li><a href="/browse">Find a ride</a></li>
           <li><a href="/add">Add Ride</a></li>
         </ul>
         <ul class="pull-right">
-          <li><a href="#">Sign Up</a></li>
-          <li><a href="#">Log In</a></li>
-          <li><a href="#">Help</a></li>
+          <!--<li><a href="#">About</a></li>-->
+          <li><a href="https://docs.google.com/forms/d/1R2dEPFrnc2kUxOM-6In-M4LRmd1VoOMZ-9xADz2uIDc/viewform" target="_blank">Feedback</a></li>
         </ul>
       </div>
     </div>
@@ -26,10 +25,12 @@
       <form method="post">
         <fieldset class="add_ride">
           <legend>Add ride</legend>
-          <label class="field">Date</label>
+          <h3 class="error_message">{{error}}</h3>
+          <label class="field"><span class="red_asterisk">*</span>Date</label>
           <p class="add_ride_input">
           	<select name="month" class="month_select">
-          		<option value selected disabled>Month</option>
+              <option value="6" selected>6</option>
+          		<!--<option value= selected disabled>Month</option>
           		<option value="1">1</option>
           		<option value="2">2</option>
           		<option value="3">3</option>
@@ -41,7 +42,7 @@
           		<option value="9">9</option>
           		<option value="10">10</option>
           		<option value="11">11</option>
-          		<option value="12">12</option>
+          		<option value="12">12</option>-->
           	</select>
           	<span class="date_slash">/</span>
           	<select name="day" class="day_select">
@@ -80,15 +81,14 @@
           	</select>
           	<span class="date_slash">/</span>
           	<select name="year" class="year_select">
-          		<option value selected disabled>Year</option>
+              <option value="2014" selected>2014</option>
+          		<!--<option value selected disabled>Year</option>
           		<option value="2014">2014</option>
-          		<option value="2015">2015</option>
-          		<option value="2016">2016</option>
-          		<option value="2017">2017</option>
+          		<option value="2015">2015</option>-->
           	</select>
           </p>
 
-          <label class="field">Time</label>
+          <label class="field"><span class="red_asterisk">*</span>Time</label>
           <p class="add_ride_input">
           	<select name="hour" class="hour_select">
           		<option value selected disabled>Hour</option>
@@ -119,30 +119,56 @@
           	</select>
           </p>
 
-          <label class="field">Pick-up location</label>
+          <label class="field"><span class="red_asterisk">*</span>Pick-up location</label>
           <p class="add_ride_input">
-          	<input name="location" type="text">
+          	<input name="location" type="text" value={{location}}>
           </p>
 
-          <label class="field">Destination</label>
+          <label class="field"><span class="red_asterisk">*</span>Destination</label>
           <p class="add_ride_input">
-          	<input name="destination" type="text">
+            <select name="destination" class="destination_select">
+              <option value selected disabled>Destination</option>
+              <option value="ohare">O'Hare Airport</option>
+              <option value="midway">Midway Airport</option>
+            </select>
+          	<!--<input name="destination" type="text" value={{destination}}>-->
           </p>
           
-          <label class="field">Name</label>
+          <label class="field"><span class="red_asterisk">*</span>Name</label>
           <p class="add_ride_input">
-          	<input name="name" type="text">
+          	<input name="name" type="text" value={{name}}>
           </p>
 
-          <label class="field">Phone number</label>
+          <label class="field">Phone number (optional, but strongly encouraged)</label>
           <p class="add_ride_input">
-          	<input name="phone" type="text">
+          	<input name="phone" type="text" value={{phone}}>
           </p>
 
-          <button name="create_ride_button" value="1">ADD RIDE</button>
+          <label class="field"><span class="red_asterisk">*</span>E-mail</label>
+          <p class="add_ride_input">
+          	<input name="email" type="text" value={{email}}>
+          </p>
+
+          <label><span class="red_asterisk">*</span>Excess luggage? (more than one carry-on suitcase and one carry-on bag)</label>
+          <p>
+            <input type="radio" name="luggage" value="Yes"> Yes
+          </p>
+          <p>
+            <input type="radio" name="luggage" value="No"> No
+          </p>
+
+          <label class="code"><span class="red_asterisk">*</span>Delete code (remember this code in case you want to remove yourself from the ride later)</label>
+          <p class="add_ride_input">
+            <input type="text" name="code">
+          </p>
+
+          <label class="comments">Additional comments (optional)</label>
+          <p class="add_ride_input">
+            <input type="text" name="comments">
+          </p>
+          <button name="add_ride_button" value="1">ADD RIDE</button>
         </fieldset>
       </form>
-      <p class="error_message">{{error}}</p>
     </div>
 
 </body>

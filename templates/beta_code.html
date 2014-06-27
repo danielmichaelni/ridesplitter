@@ -2,10 +2,11 @@
 <html>
 
   <head>
-    <title>Browse</title>
+    <title>ridesplitter</title>
     <link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/static/styles/main.css">
+    
   </head>
 
   <body>
@@ -23,36 +24,13 @@
       </div>
     </div>
 
-    <h1 class="centered_h1">Select an Airport</h1>
-
-    <div class="airport_container">
-      <a href="browse/ohare">
-        <img class="ohare_img" src="/static/imgs/ohare.jpg">
-      </a>
-      <a href="browse/midway">
-        <img class="midway_img" src="/static/imgs/midway.jpg">
-      </a>
+    <div class="rides_container">
+      <br>
+      <form method="post">
+        <label class="field">Enter beta code to continue</label>
+        <p class="add_ride_input">
+          <input name="beta_code">
+        </p>
+        <button name="beta_code_button" value="1">Submit</button>
+      </form>
     </div>
-
-    <!--<div class="col-md-4">
-      <a href="browse/ohare">
-        <div class="thumbnail">
-          <img src="/static/imgs/ohare.jpg">
-        </div>
-      </a>
-    </div>
-
-    <div class="col-md-4">
-      <h2>-- select an airport --</h2>
-    </div>
-
-    <div class="col-md-4">
-      <a href="browse/midway">
-        <div class="thumbnail">
-          <img src="/static/imgs/midway.jpg">
-        </div>
-      </a>
-    </div>-->
-    
-  </body>
-</html>

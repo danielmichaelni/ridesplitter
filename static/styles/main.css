@@ -1,5 +1,6 @@
 .nav {
-  background-color: #DFDFDF;
+
+  border-bottom: 2px #DDDDDD solid;
 }
 
 .nav a {
@@ -8,6 +9,7 @@
   font-weight: bold;
   padding: 14px 10px;
   text-transform: uppercase;
+  text-decoration: none;
 }
 
 .nav a:hover {
@@ -107,22 +109,25 @@
 
 .year_select {
   width: 32%;
-  float: right;
 }
 
 .am_pm_select {
-  float: right;
   width: 18%;
+}
+
+.destination_select {
+  width: 100%;
 }
 
 .field {
   float: left;
   font-weight: bold;
-  margin-top: 12px;
+  margin-top: 6px;
+  margin-bottom: 4px;
 }
 
 .add_ride button {
-  margin-top: 20px;
+  margin-top: 10px;
   width: 100%;
   height: 40px;
   border-radius: 0px;
@@ -147,9 +152,9 @@ input[type=date]::-webkit-inner-spin-button {
 }
 
 .ride, .full_ride {
-  margin: 10px;
+  margin: 16px 0 16px 0;
   padding: 10px;
-  width: 600px;
+  width: 100%;
   border: 1px solid black;
 }
 
@@ -158,13 +163,20 @@ input[type=date]::-webkit-inner-spin-button {
 }
 
 .full_ride {
-  background-color: #FF8D90;
+  background-color: #FF9999;
+  color: #454545;
 }
 
 #join_popup {
   background-color: #97A4DB;
   display: none;
-  height: 300px;
+  height: 500px;
+}
+
+#delete_popup {
+  background-color: #97A4DB;
+  display: none;
+  height: 500px;
 }
 
 .ui-dialog {
@@ -193,15 +205,97 @@ input[type=date]::-webkit-inner-spin-button {
   float: right;
 }
 
-.ui-dialog-content {
+.ui-widget-content .input_button {
+  margin-top: 10px;
+  width: 100%;
+  height: 40px;
+  border-radius: 0px;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: gray;
+  border: none;
+  color: white;
+}
+
+#delete_popup.ui-dialog-content {
   padding: 10px;
-  height: 120px !important;
+  height: 130px !important;
+}
+
+#join_popup.ui-dialog-content {
+  padding: 10px;
+  height: 600px !important;
 }
 
 .error_message {
   color: red;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 10px;
 }
 
 legend {
   text-align: center;
+  margin-bottom: 10px;
+}
+
+.rides_container {
+  width: 700px;
+  margin: auto;
+}
+
+.rides_container h1 {
+  text-align: center;
+}
+
+.full_msg {
+  font-weight: bold;
+  text-align: center;
+}
+
+.col-md-4 h2 {
+  margin-top: 150px;
+  text-align: center;
+}
+
+.airport_container {
+  width: 900px;
+  margin: auto;
+}
+
+.airport_container img {
+  width: 420px;
+}
+
+.ohare_img {
+  float: left;
+}
+
+.midway_img {
+  float: right;
+}
+
+.centered_h1 {
+  text-align: center;
+}
+
+.delete_button {
+  background-color: #555;
+  color: white;
+  border: none;
+  border-radius: 10px;
+}
+
+.delete_button:hover {
+  background-color: #777;
+}
+
+.refresh_message {
+  text-align: center;
+}
+
+.red_asterisk {
+  color: red;
+  font-size: 20px;
 }

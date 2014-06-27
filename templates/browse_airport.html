@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Browse</title>
+    <link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/static/styles/main.css">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script>
+      function popup_join_form(give_ride_id) {
+        $("#join_popup").dialog({
+          height: 300,
+          width: 500
+        });
+        var val_ride_id = document.getElementById("ride_id");
+        val_ride_id.value = give_ride_id;
+      };
+      function popup_delete_form(give_rider_id, give_delete_ride_id) {
+        $("#delete_popup").dialog({
+          height: 300,
+          width: 500
+        });
+        var val_rider_id = document.getElementById("rider_id");
+        val_rider_id.value = give_rider_id;
+        var val_ride_id = document.getElementById("delete_ride_id");
+        val_ride_id.value = give_delete_ride_id;
+      };
+  </script>
+
+  </head>
+
+  <body>
+    <div class="nav">
+      <div class="container">
+        <ul class="pull-left">
+          <li><a href="/">Home</a></li>
+          <li><a href="/browse">Find a ride</a></li>
+          <li><a href="/add">Add Ride</a></li>
+        </ul>
+        <ul class="pull-right">
+          <!--<li><a href="#">About</a></li>-->
+          <li><a href="https://docs.google.com/forms/d/1R2dEPFrnc2kUxOM-6In-M4LRmd1VoOMZ-9xADz2uIDc/viewform" target="_blank">Feedback</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!--<div id="create_popup">
+      <form method="post">
+        <fieldset class="add_ride">
+          <legend>Add ride</legend>
+          <p>
+            <label class="field">Date:</label>
+            <input name="date" type="date">
+          </p>
+          <p>
+            <label class="field">Time:</label>
+            <input name="time" type="time">
+          </p>
+          <p>
+            <label class="field">Pick-up location:</label>
+            <input name="location" type="text">
+          </p>
+          <p>
+            <label class="field">Destination:</label>
+            <input name="destination" type="text">
+          </p>
+          <p>
+            <label class="field">Name:</label>
+            <input name="name" type="text">
+          </p>
+          <p>
+            <label class="field">Phone number:</label>
+            <input name="phone" type="text">
+          </p>
+          <button name="create_ride_button" value="1">Submit</button>
+        </fieldset>
+      </form>
+      <p class="error_message">{{error}}</p>
+    </div>-->
+    
+    <div class="rides_container">
+      <h1>{{airport}}</h1>
+      <p class="refresh_message">Please refresh the page if your ride has not yet been updated</p>
+      {% for ride in rides %}
+      {% if ride.riders|length >= 3 %}
+      <div class="full_ride">
+        <p class="full_msg">THIS RIDE IS FULL</p>
+        <p><b>Date: </b>{{ride.pickup_datetime.strftime("%a. %m/%d/%Y")}}</p>
+        <p><b>Time: </b>{{ride.pickup_datetime.strftime("%I:%M %p")}}</p>
+        <p><b>Pick-up location: </b>{{ride.location}}</p>
+        <!--<p>Destination: {{ride.destination}}</p>-->
+        <p>
+          <b>Additional comments: </b>
+          {% if ride.comments %}
+          {{ride.comments}}
+          {% else %}
+          None
+          {% endif %}
+        </p>
+        <table class="table">
+          <tr>
+            <th>Delete</th>
+            <th>Riders</th>
+            <th>Phone numbers</th>
+            <th>Emails</th>
+            <th>Excess luggage?</th>
+          </tr>
+          {% for i in range(ride.riders|length) %}
+          <tr>
+            <td><button onclick="popup_delete_form({{i}}, {{ride.key().id()}})" class="delete_button">X</button></td>
+            <td>{{ride.riders[i]}}</td>
+            <td>{{ride.numbers[i]}}</td>
+            <td>{{ride.emails[i]}}</td>
+            <td>{{ride.luggage[i]}}</td>
+          </tr>
+          {% endfor %}
+        </table>
+        <!--<p>Riders:
+          {% for rider in ride.riders %}
+          <span>{{rider}}</span>
+          {% endfor %}
+        </p>
+        <p>Phone numbers:
+          {% for number in ride.numbers %}
+          <span>{{number}}</span>
+          {% endfor %}
+        </p>
+        <p>Emails:
+          {% for email in ride.emails %}
+          <span>{{email}}</span>
+          {% endfor %}
+        </p>-->
+      </div>
+      {% else %}
+      <div class="ride">
+        <p><b>Date: </b>{{ride.pickup_datetime.strftime("%a. %m/%d/%Y")}}</p>
+        <p><b>Time: </b>{{ride.pickup_datetime.strftime("%I:%M %p")}}</p>
+        <p><b>Pick-up location: </b>{{ride.location}}</p>
+        <!--<p>Destination: {{ride.destination}}</p>-->
+        <p>
+          <b>Additional comments: </b>
+          {% if ride.comments %}
+          {{ride.comments}}
+          {% else %}
+          None
+          {% endif %}
+        </p>
+        <table class="table">
+          <tr>
+            <th>Delete</th>
+            <th>Riders</th>
+            <th>Phone numbers</th>
+            <th>Emails</th>
+            <th>Excess luggage?</th>
+          </tr>
+          {% for i in range(ride.riders|length) %}
+          <tr>
+            <td><button onclick="popup_delete_form({{i}}, {{ride.key().id()}})" class="delete_button">X</button></td>
+            <td>{{ride.riders[i]}}</td>
+            <td>{{ride.numbers[i]}}</td>
+            <td>{{ride.emails[i]}}</td>
+            <td>{{ride.luggage[i]}}</td>
+          </tr>
+          {% endfor %}
+        </table>
+        <!--<p>Riders:
+          {% for rider in ride.riders %}
+          <span>{{rider}}</span>
+          {% endfor %}
+        </p>
+        <p>Phone numbers:
+          {% for number in ride.numbers %}
+          <span>{{number}}</span>
+          {% endfor %}
+        </p>
+        <p>Emails:
+          {% for email in ride.emails %}
+          <span>{{email}}</span>
+          {% endfor %}
+        </p>-->
+        <button onclick="popup_join_form({{ride.key().id()}})">Join</button>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+
+    <div id="join_popup" title="Join ride">
+      <form method="post">
+        <label class="field"><span class="red_asterisk">*</span>Name</label>
+        <p class="add_ride_input">
+          <input name="join_name" type="text">
+        </p>
+
+        <label class="field">Phone number (optional, but strongly encouraged)</label>
+        <p class="add_ride_input">
+          <input name="join_phone" type="text">
+        </p>
+
+        <label class="field"><span class="red_asterisk">*</span>E-mail</label>
+        <p class="add_ride_input">
+          <input name="join_email" type="text">
+        </p>
+
+        <label><span class="red_asterisk">*</span>Excess luggage? (more than one carry-on suitcase and one carry-on bag)</label>
+        <p>
+          <input type="radio" name="join_luggage" value="Yes"> Yes
+        </p>
+        <p>
+          <input type="radio" name="join_luggage" value="No"> No
+        </p>
+
+        <label class="field"><span class="red_asterisk">*</span>Delete code (remember this code in case you want to remove yourself from the ride later)</label>
+        <p class="add_ride_input">
+          <input type="text" name="join_code">
+        </p>
+
+        <p>Out of courtesy to other students, please remove yourself from the ride and contact the ride creater if you can no longer make it.</p>
+
+        <input id="ride_id" type="hidden" name="get_ride_id">
+        <button name="join_ride_button" class="input_button" value="1">Join</button>
+        <p>{{error}}</p>
+      </form>
+    </div>
+
+    <div id="delete_popup" title="Delete rider">
+      <form method="post">
+        <label class="field">Enter delete code:</label>
+        <p class="field">
+          <input name="delete_code" type="text">
+        </p>
+        <input id="rider_id" type="hidden" name="get_rider_id">
+        <input id="delete_ride_id" type="hidden" name="get_delete_ride_id">
+        <button name="delete_rider_button" class="input_button" value="1">Delete</button>
+      </form>
+    </div>
+
+  </body>
+</html>
